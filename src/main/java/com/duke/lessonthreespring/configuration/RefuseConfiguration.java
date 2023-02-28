@@ -12,18 +12,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = {"lessonthreespring"})
 public class RefuseConfiguration {
-    @Value("${testEnvironment}")
-    private String testEnvironment;
-//    @Bean
-    public RefuseService refuseService() {
-        switch (testEnvironment) {
-            case "test":
-                return new MockRefuseService();
-            case "sber":
-                return new SberRefuseService();
-            case "alfa":
-                return new AlfaRefuseService();
-        }
-        throw new IllegalArgumentException();
-    }
+//    @Value("${testEnvironment}")
+//    private String testEnvironment;
+////    @Bean
+//    public RefuseService refuseService() {
+//        switch (testEnvironment) {
+//            case "test":
+//                return new MockRefuseService();
+//            case "sber":
+//                return new SberRefuseService();
+//            case "alfa":
+//                return new AlfaRefuseService();
+//        }
+//        throw new IllegalArgumentException();
+//    }
 }
