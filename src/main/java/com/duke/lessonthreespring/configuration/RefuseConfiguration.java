@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class RefuseConfiguration {
     @Value("${testEnvironment}")
     private String testEnvironment;
-    @Bean
+//    @Bean
     public RefuseService refuseService() {
         switch (testEnvironment) {
             case "test":

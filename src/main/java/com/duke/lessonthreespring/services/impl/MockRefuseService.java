@@ -3,7 +3,7 @@ package com.duke.lessonthreespring.services.impl;
 import com.duke.lessonthreespring.services.RefuseService;
 import org.springframework.stereotype.Service;
 
-//@Service задан вручную в конфигурации
+@Service
 public class MockRefuseService implements RefuseService {
     @Override
     public void refuse(String applicationId) {
