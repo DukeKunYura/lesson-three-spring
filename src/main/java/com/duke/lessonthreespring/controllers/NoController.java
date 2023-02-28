@@ -1,5 +1,6 @@
 package com.duke.lessonthreespring.controllers;
 
+import com.duke.lessonthreespring.services.RefuseAllService;
 import com.duke.lessonthreespring.services.RefuseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class NoController {
     private final RefuseService refuseService;
+    private final RefuseAllService refuseAllService;
     @GetMapping("/no")
     public String sayNo(String applicationId){
         refuseService.refuse(applicationId);
         return "Hey";
+    }
+    @GetMapping("/no-all")
+    public String sayAllNo(String applicationId){
+        refuseAllService.refuse(applicationId);
+        return "No for all";
     }
 }
