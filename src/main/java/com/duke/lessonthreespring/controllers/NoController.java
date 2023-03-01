@@ -14,9 +14,17 @@ public class NoController {
     private final RefuseAllService refuseAllService;
     @GetMapping("/no")
     public String sayNo(String applicationId){
+        validateApplicationId(applicationId);
         refuseService.refuse(applicationId);
         return "Hey";
     }
+
+    private static void validateApplicationId(String applicationId) {
+        if (applicationId.length() > 4) {
+            throw new IllegalArgumentException("length should be 4 or less");
+        }
+    }
+
     @GetMapping("/no-all")
     public String sayAllNo(String applicationId){
         refuseAllService.refuse(applicationId);

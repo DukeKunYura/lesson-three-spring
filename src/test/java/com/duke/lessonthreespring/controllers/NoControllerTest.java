@@ -35,6 +35,14 @@ class NoControllerTest {
     NoController noController;
 
     @Test
+    void applicationIdIsAtMock4InLength() {
+        assertNotNull(refuseServiceMock);
+
+        assertThrows(IllegalArgumentException.class,
+                () -> noController.sayNo("12345"));
+    }
+
+    @Test
     void mockitoSayNo() {
         assertNotNull(refuseServiceMock);
         noController.sayNo("123");
