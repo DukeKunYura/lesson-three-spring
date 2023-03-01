@@ -6,7 +6,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Service
-@ConditionalOnProperty(name = "workEnvironment", havingValue = "sber")
+@Primary
+//@ConditionalOnProperty(name = "workEnvironment", havingValue = "sber")
 public class SberRefuseService implements RefuseService {
     @Override
     public void refuse(String applicationId) {
