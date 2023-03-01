@@ -3,6 +3,7 @@ package com.duke.lessonthreespring.controllers;
 import com.duke.lessonthreespring.services.RefuseService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -30,10 +31,12 @@ class NoControllerTest {
         assertTrue(refuseService.isMethodCalled());
     }
 
+    @InjectMocks
+    NoController noController;
+
     @Test
     void mockitoSayNo() {
         assertNotNull(refuseServiceMock);
-        NoController noController = new NoController(refuseServiceMock, null);
         noController.sayNo("123");
 
         verify(refuseServiceMock).refuse(eq("123"));
