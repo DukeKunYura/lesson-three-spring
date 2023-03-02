@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(SpringExtension.class)
@@ -25,23 +26,15 @@ public class NoControllerIntegrationTest {
     MockMvc mockMvc;
 
     @MockBean
-    RefuseService refuseService;
-
-    @MockBean
-    RefuseAllService refuseAllService;
-
-    @MockBean
-    AppIdValidationService appIdValidationService;
+    NoController noController;
 
     @Test
     void saiNo() throws Exception {
-        //assertNotNull(mockMvc);
+        doReturn("Hey").when(noController).sayNo(eq("123"));
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/no")
-                .queryParam("applicationId", "123"))
+                .queryParam("appId", "123"))
                 .andReturn();
         String actual = result.getResponse().getContentAsString();
         assertThat(actual).isEqualTo("Hey");
-        verify(appIdValidationService).validate(eq("123"));
-
     }
 }

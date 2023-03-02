@@ -5,6 +5,7 @@ import com.duke.lessonthreespring.services.RefuseAllService;
 import com.duke.lessonthreespring.services.RefuseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -16,7 +17,7 @@ public class NoController {
     private final AppIdValidationService appIdValidationService;
 
     @GetMapping("/no")
-    public String sayNo(String applicationId) {
+    public String sayNo(@RequestParam(name = "appId") String applicationId) {
         if (appIdValidationService.validate(applicationId)) {
             refuseService.refuse(applicationId);
         }
